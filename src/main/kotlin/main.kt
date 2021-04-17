@@ -1,15 +1,21 @@
 fun main(args: Array<String>) {
-    val fruitsList: List<String> = listOf("Apple", "Pear", "Strawberry", "Peach")
-
-    for (fruit in fruitsList) println("Today I'm going to eat a fruit called $fruit")
-
-    fruitsList.forEach { fruit ->
-        println("Today I'm going to eat a new fruit called $fruit")
+    var name: String? = null
+    try {
+        throw NullPointerException("Referencia nula")
+    } catch (exception: NullPointerException) {
+        println("Ha ocurrido un error")
+    } finally {
+        println("Cerrando aplicación")
     }
 
-    val fruitsChars: List<Int> = fruitsList.map { fruit -> fruit.length }
-    println(fruitsChars) // [5, 4, 10, 5]
+    val firstValue = 10
+    val secondValue = 0
 
-    val filteredList = fruitsChars.filter { fruitLength -> fruitLength > 5 }
-    println(filteredList) // [10]
+    val result: Int = try {
+        firstValue / secondValue
+    } catch (exception: Exception) {
+        0
+    }
+
+    println(result) // 0
 }
