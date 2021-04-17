@@ -1,14 +1,15 @@
 fun main(args: Array<String>) {
-    var counter = 10
+    val fruitsList: List<String> = listOf("Apple", "Pear", "Strawberry", "Peach")
 
-    while (counter > 0) {
-        println("El valor del contador es $counter")
-        counter--
+    for (fruit in fruitsList) println("Today I'm going to eat a fruit called $fruit")
+
+    fruitsList.forEach { fruit ->
+        println("Today I'm going to eat a new fruit called $fruit")
     }
 
-    do {
-        println("Generando numero aleatorio ...")
-        val randomNumber = (0..100).random()
-        println("El número generado es $randomNumber")
-    } while (randomNumber > 50)
+    val fruitsChars: List<Int> = fruitsList.map { fruit -> fruit.length }
+    println(fruitsChars) // [5, 4, 10, 5]
+
+    val filteredList = fruitsChars.filter { fruitLength -> fruitLength > 5 }
+    println(filteredList) // [10]
 }
