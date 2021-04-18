@@ -1,25 +1,23 @@
 fun main(args: Array<String>) {
-    val lotteryNumbers = listOf(11, 82, 22, 43, 56, 78, 66)
+    val superheroesAge = mutableMapOf(
+        "Ironman" to 35,
+        "Spiderman" to 23,
+        "Capitan America" to 99
+    )
+    println(superheroesAge) // {Ironman=35, Spiderman=23, Capitan America=99}
 
-    val sortedNumbers = lotteryNumbers.sorted()
-    println(sortedNumbers) // [11, 22, 43, 56, 66, 78, 82]
+    superheroesAge.put("Wolverine", 45)
+    println(superheroesAge) // {Ironman=35, Spiderman=23, Capitan America=99, Wolverine=45}
 
-    val sortedDescNumbers = lotteryNumbers.sortedDescending()
-    println(sortedDescNumbers) // [82, 78, 66, 56, 43, 22, 11]
+    superheroesAge["Storm"] = 30
+    println(superheroesAge) // {Ironman=35, Spiderman=23, Capitan America=99, Wolverine=45, Storm=30}
 
-    val sortByMultiples = lotteryNumbers.sortedBy { number -> number < 50 }
-    println(sortByMultiples) // [82, 56, 78, 66, 11, 22, 43]
+    val ageIronman = superheroesAge["Ironman"]
+    println(ageIronman) // 35
 
-    val randomNumbers = lotteryNumbers.shuffled()
-    println(randomNumbers) // [43, 22, 56, 78, 82, 66, 11]
+    superheroesAge.remove("Wolverine")
+    println(superheroesAge) // {Ironman=35, Spiderman=23, Capitan America=99, Storm=30}
 
-    val reverseNumbers = lotteryNumbers.reversed()
-    println(reverseNumbers) // [66, 78, 56, 43, 22, 82, 11]
-
-    val numberMessages = lotteryNumbers.map { number -> "Tu numero de loteria es $number" }
-    println(numberMessages) // [Tu numero de loteria es 11, ...]
-
-    val filteredNumbers = lotteryNumbers.filter { number -> number > 50 }
-    println(filteredNumbers) // [82, 56, 78, 66]
-
+    println(superheroesAge.keys) // [Ironman, Spiderman, Capitan America, Storm]
+    println(superheroesAge.values) // [35, 23, 99, 30]
 }
