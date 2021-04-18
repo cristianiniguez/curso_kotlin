@@ -1,20 +1,18 @@
 fun main(args: Array<String>) {
-    val vowels = setOf("a", "e", "i", "o", "u", "a", "e", "i", "o", "u")
-    println(vowels) // [a, e, i, o, u]
+    val randomPhrase = "En Platzi nunca paramos de aprender".randomCase()
+    printPhrase(randomPhrase)
+}
 
-    val favoriteNumbers = mutableSetOf(1, 2, 3, 4)
-    println(favoriteNumbers) // [1, 2, 3, 4]
+fun printPhrase(phrase: String): Unit {
+    println("Tu frase es: $phrase")
+}
 
-    favoriteNumbers.add(5)
-    println(favoriteNumbers) // [1, 2, 3, 4, 5]
-
-    favoriteNumbers.add(5)
-    println(favoriteNumbers) // [1, 2, 3, 4, 5]
-
-    favoriteNumbers.remove(5)
-    println(favoriteNumbers) // [1, 2, 3, 4]
-
-    val setValue: Int? = favoriteNumbers.firstOrNull { number -> number > 2 }
-    println(setValue) // 3
-
+fun String.randomCase(): String {
+    val randomNumber = 0..99
+    val randomResult = randomNumber.random()
+    return if (randomResult.rem(2) == 0) {
+        this.toUpperCase()
+    } else {
+        this.toLowerCase()
+    }
 }
