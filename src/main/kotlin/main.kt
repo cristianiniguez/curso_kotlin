@@ -1,33 +1,25 @@
 fun main(args: Array<String>) {
-    val namesList = listOf("Juan", "Enrique", "Camila")
-    println(namesList) // [Juan, Enrique, Camila]
+    val lotteryNumbers = listOf(11, 82, 22, 43, 56, 78, 66)
 
-    val voidList = mutableListOf<String>()
-    println(voidList) // []
+    val sortedNumbers = lotteryNumbers.sorted()
+    println(sortedNumbers) // [11, 22, 43, 56, 66, 78, 82]
 
-    voidList.add("Juan")
-    println(voidList) // [Juan]
+    val sortedDescNumbers = lotteryNumbers.sortedDescending()
+    println(sortedDescNumbers) // [82, 78, 66, 56, 43, 22, 11]
 
-    val valueUsingGet = voidList.get(0)
-    println(valueUsingGet) // Juan
+    val sortByMultiples = lotteryNumbers.sortedBy { number -> number < 50 }
+    println(sortByMultiples) // [82, 56, 78, 66, 11, 22, 43]
 
-    val valueUsingOperator = voidList[0]
-    println(valueUsingOperator) // Juan
+    val randomNumbers = lotteryNumbers.shuffled()
+    println(randomNumbers) // [43, 22, 56, 78, 82, 66, 11]
 
-    val firstValue: String? = namesList.firstOrNull()
-    println(firstValue) // Juan
+    val reverseNumbers = lotteryNumbers.reversed()
+    println(reverseNumbers) // [66, 78, 56, 43, 22, 82, 11]
 
-    voidList.removeAt(0)
-    println(voidList) // []
+    val numberMessages = lotteryNumbers.map { number -> "Tu numero de loteria es $number" }
+    println(numberMessages) // [Tu numero de loteria es 11, ...]
 
-    voidList.add("Enrique")
-    voidList.add("Luis")
+    val filteredNumbers = lotteryNumbers.filter { number -> number > 50 }
+    println(filteredNumbers) // [82, 56, 78, 66]
 
-    println(voidList) // [Enrique, Luis]
-    voidList.removeIf { chars -> chars.length > 4 }
-    println(voidList) // [Luis]
-
-    val myArray = arrayOf(1, 2, 3)
-    println(myArray) // [Ljava.lang.Integer;@483bf400
-    println(myArray.toList()) // [1, 2, 3]
 }
