@@ -1,23 +1,20 @@
 fun main(args: Array<String>) {
-    val superheroesAge = mutableMapOf(
-        "Ironman" to 35,
-        "Spiderman" to 23,
-        "Capitan America" to 99
-    )
-    println(superheroesAge) // {Ironman=35, Spiderman=23, Capitan America=99}
+    val vowels = setOf("a", "e", "i", "o", "u", "a", "e", "i", "o", "u")
+    println(vowels) // [a, e, i, o, u]
 
-    superheroesAge.put("Wolverine", 45)
-    println(superheroesAge) // {Ironman=35, Spiderman=23, Capitan America=99, Wolverine=45}
+    val favoriteNumbers = mutableSetOf(1, 2, 3, 4)
+    println(favoriteNumbers) // [1, 2, 3, 4]
 
-    superheroesAge["Storm"] = 30
-    println(superheroesAge) // {Ironman=35, Spiderman=23, Capitan America=99, Wolverine=45, Storm=30}
+    favoriteNumbers.add(5)
+    println(favoriteNumbers) // [1, 2, 3, 4, 5]
 
-    val ageIronman = superheroesAge["Ironman"]
-    println(ageIronman) // 35
+    favoriteNumbers.add(5)
+    println(favoriteNumbers) // [1, 2, 3, 4, 5]
 
-    superheroesAge.remove("Wolverine")
-    println(superheroesAge) // {Ironman=35, Spiderman=23, Capitan America=99, Storm=30}
+    favoriteNumbers.remove(5)
+    println(favoriteNumbers) // [1, 2, 3, 4]
 
-    println(superheroesAge.keys) // [Ironman, Spiderman, Capitan America, Storm]
-    println(superheroesAge.values) // [35, 23, 99, 30]
+    val setValue: Int? = favoriteNumbers.firstOrNull { number -> number > 2 }
+    println(setValue) // 3
+
 }
