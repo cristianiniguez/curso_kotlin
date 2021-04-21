@@ -18,15 +18,14 @@ val respuestas = mapOf(
     "No lo creo" to RESPUESTA_NEGATIVA,
 )
 
-fun main(args: Array<String>) {
+fun main() {
     println("Hola, soy tu Bola 8 magica creada en Kotlin")
     println("¿Cual de estas opciones deseas realizar?")
     println("1. Realizar una pregunta")
     println("2. Revisar todas las respuestas")
     println("3. Salir")
 
-    val valorIngresado = readLine()
-    when (valorIngresado) {
+    when (readLine()) {
         "1" -> realizarPregunta()
         "2" -> mostrarRespuestas()
         "3" -> salir()
@@ -49,8 +48,7 @@ fun mostrarRespuestas() {
     println("3. Revisar solo las respuestas dudosas")
     println("4. Revisar solo las respuestas negativas")
 
-    val opcionIngresada = readLine()
-    when (opcionIngresada) {
+    when (readLine()) {
         "1" -> mostrarRespuestasPorTipo()
         "2" -> mostrarRespuestasPorTipo(RESPUESTA_AFIRMATIVA)
         "3" -> mostrarRespuestasPorTipo(RESPUESTA_DUDOSA)
@@ -61,17 +59,19 @@ fun mostrarRespuestas() {
 }
 
 fun mostrarRespuestasPorTipo(tipoDeRespuesta: String = "TODAS") {
+    val imprimirRespuestas: (Map<String, String>) -> Unit = { respuestasFiltradas -> println(respuestasFiltradas.keys) }
+
     when (tipoDeRespuesta) {
         "TODAS" -> respuestas.keys.forEach { respuesta -> println(respuesta) }
 
         RESPUESTA_AFIRMATIVA -> respuestas.filterValues { valores -> valores == RESPUESTA_AFIRMATIVA }
-            .also { respuestasPositivas -> println(respuestasPositivas.keys) }
+            .also(imprimirRespuestas)
 
         RESPUESTA_NEGATIVA -> respuestas.filterValues { valores -> valores == RESPUESTA_NEGATIVA }
-            .also { respuestasNegativas -> println(respuestasNegativas.keys) }
+            .also(imprimirRespuestas)
 
         RESPUESTA_DUDOSA -> respuestas.filterValues { valores -> valores == RESPUESTA_DUDOSA }
-            .also { respuestasDudosas -> println(respuestasDudosas.keys) }
+            .also(imprimirRespuestas)
     }
 }
 
